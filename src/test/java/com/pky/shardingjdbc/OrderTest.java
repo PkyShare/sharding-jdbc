@@ -1,6 +1,5 @@
-package com.pky.shardingjdbc.order;
+package com.pky.shardingjdbc;
 
-import com.pky.shardingjdbc.ShardingJDBCApplication;
 import com.pky.shardingjdbc.mapper.OrderMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,6 +18,8 @@ public class OrderTest {
 
     @Test
     public void testOrder() {
-        orderMapper.insert(new BigDecimal(11), 1l, "yes");
+        for(int i = 0; i < 20; i++) {
+            orderMapper.insert(new BigDecimal(i), 1L, "yes");
+        }
     }
 }

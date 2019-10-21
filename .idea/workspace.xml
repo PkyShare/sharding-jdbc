@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9fecc8f2-1ab8-4228-9175-2c587972521a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/pky/shardingjdbc/OrderTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pky/shardingjdbc/mapper/OrderMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pky/shardingjdbc/mapper/OrderMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/pky/shardingjdbc/order/OrderTest.java" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -73,7 +77,23 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.OrderTest.testOrder">
+  <component name="RunManager" selected="JUnit.OrderTest.testOrder (1)">
+    <configuration name="OrderTest.testOrder (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="sharding-jdbc" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.pky.shardingjdbc.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.pky.shardingjdbc" />
+      <option name="MAIN_CLASS_NAME" value="com.pky.shardingjdbc.OrderTest" />
+      <option name="METHOD_NAME" value="testOrder" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="OrderTest.testOrder" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="sharding-jdbc" />
       <extension name="coverage">
@@ -105,6 +125,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.OrderTest.testOrder (1)" />
         <item itemvalue="JUnit.OrderTest.testOrder" />
         <item itemvalue="Spring Boot.ShardingJDBCApplication" />
       </list>
@@ -125,6 +146,7 @@
       <workItem from="1571502969149" duration="705000" />
       <workItem from="1571667548747" duration="3911000" />
       <workItem from="1571673958076" duration="350000" />
+      <workItem from="1571674416960" duration="857000" />
     </task>
     <servers />
   </component>
@@ -136,7 +158,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
