@@ -1,0 +1,51 @@
+server:
+  port: 9095
+  servlet:
+    context-path: /sharding-jdbc
+
+spring:
+  application:
+    name: sharding-jdbc
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  main:
+    allow-bean-definition-overriding: true     # 针对bean被重复定义，重复则覆盖
+
+  ## Sharding-jdbc 分片规则配置
+  # 数据源
+  shardingsphere:
+    datasource:
+      names: m1 # m1为数据源别名
+      # 数据库连接池
+      m1:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://192.168.6.101:3306/order_db?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=Asia/Shanghai
+        username: root
+        password: host
+    # 指定t_order表的数据分布情况配置数据节点
+    sharding:
+      tables:
+        t_order:  # 数据库中已经分表的逻辑表
+          actual-data-nodes: m1.t_order_$->{1..2}
+          # 指定t_order表的主键生成策略
+          key-generator:
+            column: order_id # 主键列
+            type: SNOWFLAKE # 策略算法类型为SNOWFLAKE(雪花算法，实现全局主键自增)
+          # 指定t_order表的分片策略，分片策略包括分片键和分片算法
+          table-strategy:
+            inline:
+              sharding-column: order_id # 以 order_id 为分片键
+              algorithm-expression: t_order_$->{order_id % 2 + 1} # order_id 取模进行分片，如 order_id 尾数为偶数则存入 t_order_1中，否则存入 t_order_2 中
+    # 打开sql输出日志
+    props:
+      sql:
+        show: true
+
+# 和数据库字段进行印射，最终成为驼峰命名
+mybatis:
+  configuration:
+    map-underscore-to-canel-case: true
