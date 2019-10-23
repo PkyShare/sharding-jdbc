@@ -35,4 +35,19 @@ public interface UserMapper {
             "</foreach>" +
             "</script>")
     List<Map> selectUserByUserIds(@Param("userIds") List<Long> userIds);
+
+    /**
+     * 根据id和字典信息查询用户
+     * @param userIds id集合
+     * @return
+     */
+    @Select("<script>" +
+            "select * from t_user u, t_dict d " +
+            "where u.user_type = d.code and u.user_id in " +
+            "<foreach collection = 'userIds' open = '(' separator = ',' close = ')' item = 'id'> " +
+            "#{id}" +
+            "</foreach>" +
+            "</script>")
+    List<Map> selectUserByUserInfo(@Param("userIds") List<Long> userIds );
+
 }

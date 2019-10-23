@@ -33,4 +33,15 @@ public class UserTest {
         userIds.add(11L);
         List<Map> orders = userMapper.selectUserByUserIds(userIds);
     }
+
+    @Test
+    public void testSelectByUserIds() {
+        List<Long> userIds = new ArrayList<>();
+        userIds.add(1L);
+        userIds.add(11L);
+        List<Map> users = userMapper.selectUserByUserInfo(userIds);
+        for (Map user: users) {
+            System.out.println(user.toString());
+        }
+    }
 }
