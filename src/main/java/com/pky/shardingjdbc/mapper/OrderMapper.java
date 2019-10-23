@@ -33,6 +33,21 @@ public interface OrderMapper {
             "#{id}" +
             "</foreach>" +
             "</script>")
-    List<Map> selectOrderByIds(@Param("orderIds") List<Long> orderIds);
+    List<Map> selectOrderByOrderIds(@Param("orderIds") List<Long> orderIds);
+
+    /**
+     * 根据id查询订单
+     * @param orderIds id集合
+     * @return
+     */
+    @Select("<script>" +
+            "select * from t_order o " +
+            "where o.order_id in " +
+            "<foreach collection = 'orderIds' open = '(' separator = ',' close = ')' item = 'id'> " +
+            "#{id}" +
+            "</foreach> " +
+            "and user_id = #{userId}" +
+            "</script>")
+    List<Map> selectOrderByOrderIdsAndUserId(@Param("orderIds") List<Long> orderIds, @Param("userId") Long userId);
 
 }

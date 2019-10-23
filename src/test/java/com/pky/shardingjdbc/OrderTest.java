@@ -23,16 +23,27 @@ public class OrderTest {
     @Test
     public void testInsert() {
         for(int i = 0; i < 20; i++) {
-            orderMapper.insert(new BigDecimal(i), 1L, "yes");
+            orderMapper.insert(new BigDecimal(i), 2L, "yes");
         }
     }
 
     @Test
-    public void testSelect() {
+    public void testSelectByOrderIds() {
         List<Long> orderIds = new ArrayList<>();
         orderIds.add(393345721874513920l);
-        orderIds.add(393345722830815232l);
-        orderIds.add(393345721346031617l);
-        List<Map> orders = orderMapper.selectOrderByIds(orderIds);
+        orderIds.add(393783366735888385L);
+        List<Map> orders = orderMapper.selectOrderByOrderIds(orderIds);
     }
+
+    /**
+     * 通过订单id和用户id查询
+     */
+    @Test
+    public void testSelectByOrderIdsAndUserId() {
+        List<Long> orderIds = new ArrayList<>();
+        orderIds.add(393345721874513920l);
+        orderIds.add(393783366735888385L);
+        List<Map> orders = orderMapper.selectOrderByOrderIdsAndUserId(orderIds, 2L);
+    }
+
 }
